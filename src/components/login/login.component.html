@@ -8,9 +8,14 @@
     <md-card-content>
       <p>Please sign in to access the Hotspot Network</p>
 
-      <button md-raised-button (click)="signIn()">
-        <span>Sign In</span>
-      </button>
+      <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+
+        <md-input placeholder="Access Key" formControlName="key">
+        </md-input>
+
+        <button type="submit" md-raised-button>Sign In</button>
+
+      </form>
 
     </md-card-content>
   </md-card>

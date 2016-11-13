@@ -1,17 +1,29 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthVerification} from '../../services/auth-verification';
 
 @Component({
   selector: 'login-component',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.less']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  private loginForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder,
+              private auth: AuthVerification) {
+  }
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      key: ''
+    });
+  }
 
   signIn() {
-    alert("Signing in!");
+    console.log(this.loginForm.value);
+    alert(this.auth.isValid(this.loginForm.value.key));
   }
 
 }

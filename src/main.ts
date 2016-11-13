@@ -13,7 +13,9 @@ import {NgModule} from '@angular/core';
 import {AppRouterModule, AppRouterDeclarations, AppRouterProviders} from './routes';
 import {MaterialModule} from '@angular/material';
 import {HttpModule} from '@angular/http';
+import {ReactiveFormsModule} from '@angular/forms';
 import {HotspotAppComponent} from './components/app/app.component';
+import {AuthVerification} from './services/auth-verification';
 
 @NgModule({
 
@@ -21,6 +23,7 @@ import {HotspotAppComponent} from './components/app/app.component';
     BrowserModule,
     HttpModule,
     AppRouterModule,
+    ReactiveFormsModule,
 
     /* Material Design Modules */
     MaterialModule.forRoot()
@@ -32,9 +35,7 @@ import {HotspotAppComponent} from './components/app/app.component';
   ],
 
   bootstrap: [HotspotAppComponent],
-  providers: [
-    AppRouterProviders,
-  ]
+  providers: [AppRouterProviders, AuthVerification]
 })
 class AppModule {}
 
