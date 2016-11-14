@@ -69,7 +69,7 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/refresh',
+  path: '/tokens/refresh',
   handler: (request, reply) => {
     database.refresh();
     reply({message: 'Refreshed the token database'});
